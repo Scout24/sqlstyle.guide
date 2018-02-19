@@ -58,7 +58,7 @@ WHERE file_name = '.vimrc';
 ### General
 
 * Ensure the name is unique and does not exist as a
-  (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[Reserved keywords]
+  [Reserved keywords](https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
@@ -140,8 +140,7 @@ and understood easily from SQL code. Use the correct suffix where appropriate.
 
 ### Reserved words
 
-Always use uppercase for the (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[reserved keywords]
-like `SELECT` and `WHERE`.
+Always use uppercase for the [reserved keywords] (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words) like `SELECT` and `WHERE`.
 
 It is best to avoid the abbreviated keywords and use the full length ones where
 available (prefer `ABSOLUTE` to `ABS`).
@@ -165,7 +164,7 @@ spacing is used. Do not crowd code or remove natural language spaces.
 Spaces should be used to line up the code so that the root keywords all end on
 the same character boundary. This forms a river down the middle making it easy for
 the readers eye to scan over the code and separate the keywords from the
-implementation detail. Rivers are [bad in typography][rivers], but helpful here.
+implementation detail. Rivers are [bad in typography](https://practicaltypography.com/one-space-between-sentences.html), but helpful here.
 
 ```sql
 (SELECT 
@@ -197,8 +196,7 @@ GROUP BY
 )
 ```
 
-Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
-names and implementation specific details are left aligned.
+Notice that the main keywords such as `SELECT`, `FROM`, etc. are all left aligned.
 
 Although not exhaustive always include spaces:
 
@@ -273,11 +271,11 @@ SELECT r.last_name
 FROM riders AS r
   INNER JOIN bikes AS b
     ON r.bike_vin_num = b.vin_num
-      AND b.engines > 2
+    AND b.engines > 2
 
    INNER JOIN crew AS c
     ON r.crew_chief_last_name = c.last_name
-      AND c.chief = 'Y';
+    AND c.chief = 'Y';
 ```
 
 #### Subqueries
@@ -324,7 +322,8 @@ SELECT
     WHEN 'EH1' THEN 'Edinburgh'
   END AS city
 FROM office_locations
-WHERE country = 'United Kingdom'
+WHERE 
+  country = 'United Kingdom'
   AND opening_time BETWEEN 8 AND 9
   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
@@ -434,7 +433,7 @@ CREATE TABLE staff (
   should make the units self evident to prevent the requirement to combine
   columns again later in the application. Use `CHECK()` to ensure valid data is
   inserted into the column.
-* [EAV (Entity Attribute Value)][eav] tables—use a specialist product intended for
+* [EAV (Entity Attribute Value)](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model) tables—use a specialist product intended for
   handling such schema-less data instead.
 * Splitting up data that should be in one table across many because of arbitrary
   concerns such as time-based archiving or location in a multi-national
