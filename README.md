@@ -172,8 +172,7 @@ implementation detail. Rivers are [bad in typography](https://practicaltypograph
   AVG(f.height) AS average_height,
   AVG(f.diameter) AS average_diameter
 FROM flora AS f
-WHERE 
-  f.species_name = 'Banksia'
+WHERE f.species_name = 'Banksia'
   OR f.species_name = 'Sheoak'
   OR f.species_name = 'Wattle'
 GROUP BY f.species_name, f.observation_date
@@ -186,8 +185,7 @@ UNION ALL
   AVG(b.height) AS average_height,
   AVG(b.diameter) AS average_diameter
 FROM botanic_garden_flora AS b
-WHERE 
-  b.species_name = 'Banksia'
+WHERE b.species_name = 'Banksia'
   OR b.species_name = 'Sheoak'
   OR b.species_name = 'Wattle'
 GROUP BY 
@@ -211,8 +209,7 @@ SELECT
   a.release_date, 
   a.recording_date
 FROM albums AS a
-WHERE 
-  a.title = 'Charcoal Lane'
+WHERE a.title = 'Charcoal Lane'
   OR a.title = 'The New Danger';
 ```
 
@@ -251,8 +248,7 @@ SELECT
   a.recording_date,
   a.production_date -- grouped dates together
 FROM albums AS a
-WHERE 
-  a.title = 'Charcoal Lane'
+WHERE a.title = 'Charcoal Lane'
   OR a.title = 'The New Danger';
 ```
 
@@ -290,16 +286,14 @@ SELECT
   r.last_name,
   (SELECT MAX(YEAR(championship_date))
    FROM champions AS c
-   WHERE 
-    c.last_name = r.last_name
+   WHERE c.last_name = r.last_name
     AND c.confirmed = 'Y'
   ) AS last_championship_year
 FROM riders AS r
 WHERE r.last_name IN
   (SELECT c.last_name
    FROM champions AS c
-   WHERE 
-    YEAR(championship_date) > '2008'
+   WHERE YEAR(championship_date) > '2008'
     AND c.confirmed = 'Y'
   );
 ```
@@ -322,8 +316,7 @@ SELECT
     WHEN 'EH1' THEN 'Edinburgh'
   END AS city
 FROM office_locations
-WHERE 
-  country = 'United Kingdom'
+WHERE country = 'United Kingdom'
   AND opening_time BETWEEN 8 AND 9
   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
