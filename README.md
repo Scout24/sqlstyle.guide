@@ -29,8 +29,8 @@ Attribution-ShareAlike 4.0 International License.
 
 ```sql
 SELECT file_hash  -- stored ssdeep hash
-  FROM file_system
- WHERE file_name = '.vimrc';
+FROM file_system
+WHERE file_name = '.vimrc';
 ```
 ```sql
 /* Updating the file record after writing to the file */
