@@ -58,7 +58,7 @@ WHERE file_name = '.vimrc';
 ### General
 
 * Ensure the name is unique and does not exist as a
-  (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[Reserved Keywords].
+  (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[Reserved keywords]
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
