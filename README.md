@@ -2,22 +2,14 @@
 
 ## Overview
 
-You can use this set of guidelines, [fork them][fork] or make your own - the
-key here is that you pick a style and stick to it. To suggest changes
-or fix bugs please open an [issue][issue] or [pull request][pull] on GitHub.
-
-These guidelines are designed to be compatible with Joe Celko's [SQL Programming
-Style][celko] book to make adoption for teams who have already read that book
+These guidelines are designed to be compatible with Joe Celko's book to make adoption for teams who have already read that book
 easier. This guide is a little more opinionated in some areas and in others a
 little more relaxed. It is certainly more succinct where [Celko's book][celko]
 contains anecdotes and reasoning behind each rule as thoughtful prose.
 
-It is easy to include this guide in [Markdown format][dl-md] as a part of a
-project's code base or reference it here for anyone on the project to freely
-read—much harder with a physical book.
 
-SQL style guide by [Simon Holywell][simon] is licensed under a [Creative Commons
-Attribution-ShareAlike 4.0 International License][licence].
+SQL style guide by Simon Holywell is licensed under a Creative Commons
+Attribution-ShareAlike 4.0 International License.
 Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
 
 ## General
@@ -26,7 +18,7 @@ Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
 
 * Use consistent and descriptive identifiers and names.
 * Make judicious use of white space and indentation to make code easier to read.
-* Store [ISO-8601][iso-8601] compliant time and date information
+* Store ISO-8601 compliant time and date information
   (`YYYY-MM-DD HH:MM:SS.SSSSS`).
 * Try to use only standard SQL functions instead of vendor specific functions for
   reasons of portability.
