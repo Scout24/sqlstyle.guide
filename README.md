@@ -4,13 +4,12 @@
 
 These guidelines are designed to be compatible with Joe Celko's book to make adoption for teams who have already read that book
 easier. This guide is a little more opinionated in some areas and in others a
-little more relaxed. It is certainly more succinct where [Celko's book][celko]
+little more relaxed. It is certainly more succinct where Celko's book
 contains anecdotes and reasoning behind each rule as thoughtful prose.
 
 
 SQL style guide by Simon Holywell is licensed under a Creative Commons
 Attribution-ShareAlike 4.0 International License.
-Based on a work at [http://www.sqlstyle.guide][sqlstyleguide].
 
 ## General
 
@@ -36,9 +35,9 @@ SELECT file_hash  -- stored ssdeep hash
 ```sql
 /* Updating the file record after writing to the file */
 UPDATE file_system
-   SET file_modified_date = '1980-02-22 13:19:01.00000',
-       file_size = 209732
- WHERE file_name = '.vimrc';
+SET file_modified_date = '1980-02-22 13:19:01.00000',
+    file_size = 209732
+WHERE file_name = '.vimrc';
 ```
 
 ### Avoid
@@ -58,7 +57,7 @@ UPDATE file_system
 ### General
 
 * Ensure the name is unique and does not exist as a
-  [reserved keyword][reserved-keywords].
+  [reserved keyword][https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words].
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
