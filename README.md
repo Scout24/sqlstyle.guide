@@ -57,7 +57,7 @@ WHERE file_name = '.vimrc';
 ### General
 
 * Ensure the name is unique and does not exist as a
-  [https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words][Reserved Keywords].
+  (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[Reserved Keywords].
 * Keep the length to a maximum of 30 bytes—in practice this is 30 characters
   unless you are using multi-byte character set.
 * Names must begin with a letter and may not end with an underscore.
@@ -70,7 +70,7 @@ WHERE file_name = '.vimrc';
 
 ```sql
 SELECT first_name
-  FROM staff;
+FROM staff;
 ```
 
 ### Tables
@@ -102,13 +102,13 @@ SELECT first_name
 
 ```sql
 SELECT first_name AS fn
-  FROM staff AS s1
-  JOIN students AS s2
-    ON s2.mentor_id = s1.staff_num;
+FROM staff AS s1
+JOIN students AS s2
+  ON s2.mentor_id = s1.staff_num;
 ```
 ```sql
 SELECT SUM(s.monitor_tally) AS monitor_total
-  FROM staff AS s;
+FROM staff AS s;
 ```
 
 ### Stored procedures
@@ -139,7 +139,7 @@ and understood easily from SQL code. Use the correct suffix where appropriate.
 
 ### Reserved words
 
-Always use uppercase for the [reserved keywords][reserved-keywords]
+Always use uppercase for the (https://www.drupal.org/docs/develop/coding-standards/list-of-sql-reserved-words)[reserved keywords]
 like `SELECT` and `WHERE`.
 
 It is best to avoid the abbreviated keywords and use the full length ones where
@@ -150,8 +150,8 @@ exists performing the same function. This helps to make code more portable.
 
 ```sql
 SELECT model_num
-  FROM phones AS p
- WHERE p.release_date > '2014-09-30';
+FROM phones AS p
+WHERE p.release_date > '2014-09-30';
 ```
 
 ### White space
@@ -167,23 +167,31 @@ the readers eye to scan over the code and separate the keywords from the
 implementation detail. Rivers are [bad in typography][rivers], but helpful here.
 
 ```sql
-(SELECT f.species_name,
-        AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
-   FROM flora AS f
-  WHERE f.species_name = 'Banksia'
-     OR f.species_name = 'Sheoak'
-     OR f.species_name = 'Wattle'
-  GROUP BY f.species_name, f.observation_date)
+(SELECT 
+  f.species_name,
+  AVG(f.height) AS average_height,
+  AVG(f.diameter) AS average_diameter
+FROM flora AS f
+WHERE f.species_name = 'Banksia'
+  OR f.species_name = 'Sheoak'
+  OR f.species_name = 'Wattle'
+GROUP BY f.species_name, f.observation_date
+)
 
-  UNION ALL
+UNION ALL
 
-(SELECT b.species_name,
-        AVG(b.height) AS average_height, AVG(b.diameter) AS average_diameter
-   FROM botanic_garden_flora AS b
-  WHERE b.species_name = 'Banksia'
-     OR b.species_name = 'Sheoak'
-     OR b.species_name = 'Wattle'
-  GROUP BY b.species_name, b.observation_date)
+(SELECT 
+  b.species_name,
+  AVG(b.height) AS average_height,
+  AVG(b.diameter) AS average_diameter
+FROM botanic_garden_flora AS b
+WHERE b.species_name = 'Banksia'
+  OR b.species_name = 'Sheoak'
+  OR b.species_name = 'Wattle'
+GROUP BY 
+  b.species_name, 
+  b.observation_date
+)
 ```
 
 Notice that `SELECT`, `FROM`, etc. are all right aligned while the actual column
