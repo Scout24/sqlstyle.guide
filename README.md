@@ -1,7 +1,5 @@
 # SQL style guide
 
-# SQL style guide
-
 ## Overview
 
 You can use this set of guidelines, [fork them][fork] or make your own - the
