@@ -35,8 +35,9 @@ WHERE file_name = '.vimrc';
 ```sql
 /* Updating the file record after writing to the file */
 UPDATE file_system
-SET file_modified_date = '1980-02-22 13:19:01.00000',
-    file_size = 209732
+SET 
+  file_modified_date = '1980-02-22 13:19:01.00000',
+  file_size = 209732
 WHERE file_name = '.vimrc';
 ```
 
@@ -205,10 +206,13 @@ Although not exhaustive always include spaces:
   comma or semicolon.
 
 ```sql
-SELECT a.title, a.release_date, a.recording_date
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+  a.title, 
+  a.release_date, 
+  a.recording_date
+FROM albums AS a
+WHERE a.title = 'Charcoal Lane'
+  OR a.title = 'The New Danger';
 ```
 
 #### Line spacing
@@ -228,22 +232,26 @@ the query definition over quickly too.
 
 ```sql
 INSERT INTO albums (title, release_date, recording_date)
-VALUES ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
-       ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
+  VALUES 
+    ('Charcoal Lane', '1990-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000'),
+    ('The New Danger', '2008-01-01 01:01:01.00000', '1990-01-01 01:01:01.00000');
 ```
 
 ```sql
 UPDATE albums
-   SET release_date = '1990-01-01 01:01:01.00000'
- WHERE title = 'The New Danger';
+SET release_date = '1990-01-01 01:01:01.00000'
+WHERE title = 'The New Danger';
 ```
 
 ```sql
-SELECT a.title,
-       a.release_date, a.recording_date, a.production_date -- grouped dates together
-  FROM albums AS a
- WHERE a.title = 'Charcoal Lane'
-    OR a.title = 'The New Danger';
+SELECT 
+  a.title,
+  a.release_date,
+  a.recording_date,
+  a.production_date -- grouped dates together
+FROM albums AS a
+WHERE a.title = 'Charcoal Lane'
+  OR a.title = 'The New Danger';
 ```
 
 ### Indentation
@@ -258,14 +266,14 @@ line where necessary.
 
 ```sql
 SELECT r.last_name
-  FROM riders AS r
-       INNER JOIN bikes AS b
-       ON r.bike_vin_num = b.vin_num
-          AND b.engines > 2
+FROM riders AS r
+  INNER JOIN bikes AS b
+    ON r.bike_vin_num = b.vin_num
+      AND b.engines > 2
 
-       INNER JOIN crew AS c
-       ON r.crew_chief_last_name = c.last_name
-          AND c.chief = 'Y';
+   INNER JOIN crew AS c
+    ON r.crew_chief_last_name = c.last_name
+      AND c.chief = 'Y';
 ```
 
 #### Subqueries
@@ -276,17 +284,18 @@ the closing parenthesis on a new line at the same character position as its
 opening partner—this is especially true where you have nested subqueries.
 
 ```sql
-SELECT r.last_name,
-       (SELECT MAX(YEAR(championship_date))
-          FROM champions AS c
-         WHERE c.last_name = r.last_name
-           AND c.confirmed = 'Y') AS last_championship_year
-  FROM riders AS r
- WHERE r.last_name IN
-       (SELECT c.last_name
-          FROM champions AS c
-         WHERE YEAR(championship_date) > '2008'
-           AND c.confirmed = 'Y');
+SELECT 
+  r.last_name,
+  (SELECT MAX(YEAR(championship_date))
+   FROM champions AS c
+   WHERE c.last_name = r.last_name
+    AND c.confirmed = 'Y') AS last_championship_year
+FROM riders AS r
+WHERE r.last_name IN
+  (SELECT c.last_name
+   FROM champions AS c
+   WHERE YEAR(championship_date) > '2008'
+    AND c.confirmed = 'Y');
 ```
 
 ### Preferred formalisms
@@ -301,14 +310,15 @@ SELECT r.last_name,
   likely should be.
 
 ```sql
-SELECT CASE postcode
-       WHEN 'BN1' THEN 'Brighton'
-       WHEN 'EH1' THEN 'Edinburgh'
-       END AS city
-  FROM office_locations
- WHERE country = 'United Kingdom'
-   AND opening_time BETWEEN 8 AND 9
-   AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
+SELECT 
+  CASE postcode
+    WHEN 'BN1' THEN 'Brighton'
+    WHEN 'EH1' THEN 'Edinburgh'
+  END AS city
+FROM office_locations
+WHERE country = 'United Kingdom'
+  AND opening_time BETWEEN 8 AND 9
+  AND postcode IN ('EH1', 'BN1', 'NN1', 'KW1')
 ```
 
 ## Create syntax
@@ -399,12 +409,12 @@ constraints along with field value validation.
 
 ```sql
 CREATE TABLE staff (
-    PRIMARY KEY (staff_num),
+  PRIMARY KEY (staff_num),
     staff_num      INT(5)       NOT NULL,
     first_name     VARCHAR(100) NOT NULL,
     pens_in_drawer INT(2)       NOT NULL,
-                   CONSTRAINT pens_in_drawer_range
-                   CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
+  CONSTRAINT pens_in_drawer_range
+  CHECK(pens_in_drawer >= 1 AND pens_in_drawer < 100)
 );
 ```
 
